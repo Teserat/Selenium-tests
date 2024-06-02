@@ -4,5 +4,6 @@ public class Main {
     }
 
     //Przerobić wszystkie metody testowe na @Test
+    //W wolnym czasie przerobić SeleniumDemoPage na odpalanie na driverach Firefox Edge
 }
 
