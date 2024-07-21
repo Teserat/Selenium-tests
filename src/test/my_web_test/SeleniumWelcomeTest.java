@@ -2,27 +2,33 @@ package my_web_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+
 import java.util.List;
 
 public class SeleniumWelcomeTest {
     // tests on a specially prepared website
-    @Test
-    public void SeleniumWelcomeTest() {
+    WebDriver driver;
+
+    @BeforeTest
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         //Initialize Chrome options
-        ChromeDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().
                 window().
                 maximize();
         //driver.get("http://127.0.0.1:5500/index.html"); //local host
         driver.get("https://teserat.github.io/welcome/");
+    }
 
-
-
-
+    @Test
+    public void seleniumWelcomeTest() {
 
         By cssID = By.id("img1");  // by html element
         //By cssID = By.cssSelector("#img1");  // use a css selector to do the same with #
@@ -37,12 +43,27 @@ public class SeleniumWelcomeTest {
         //By emotsList = By.cssSelector("[class=emoticon-list"); // same by css selector
         driver.findElement(emotsList);
 
-
         By link1 = By.linkText("Pixabay Playlists");
         By link2 = By.partialLinkText("Jango");
         driver.findElement(link1);
         driver.findElement(link2);
 
+        By linkText = By.linkText("Pixabay Playlists");
+        WebElement pixabayLink = driver.findElement(linkText);
+        pixabayLink.click();
+        String expectedTitle = "- Pixabay";
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Wrong webside title");
+        driver.navigate().back();
+
+        By partialLink = By.partialLinkText("Jango");
+        WebElement jangoLink = driver.findElement(partialLink);
+        jangoLink.click();
+        String expectedURL = "https://www.jango.com/browse_music/genre/Recommended";
+        String actualURL = driver.getCurrentUrl();
+        Assert.assertEquals(actualURL, expectedURL, "Wrong URL address");
+        sleep(1000);
+        driver.navigate().back();
 
         //-------------------------------------  test to split
 
@@ -66,21 +87,22 @@ public class SeleniumWelcomeTest {
 
         driver.findElement(By.cssSelector("body > button")).click();
 
-
-        //sleep();
+        //sleep(2000);
         driver.quit();
     }
 
 
-    public static void sleep() {
+    public static void sleep(int sleepTimeInMillis) {
         try {
-            Thread.sleep(2000); // 5000 miliseconds = 5 seconds
+            Thread.sleep(sleepTimeInMillis); // 5000 miliseconds = 5 seconds
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
     //ToDo tests WebDriverWait
     //ToDo seperate 2 tests or more
+    //ToDo check why mvn test not work corectly
 }
 
 
