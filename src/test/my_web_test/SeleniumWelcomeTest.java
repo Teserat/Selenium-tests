@@ -67,9 +67,6 @@ public class SeleniumWelcomeTest {
 
         //-------------------------------------  test to split
 
-        By cssIDClickableButton = By.cssSelector("#testID1");
-        driver.findElement(cssIDClickableButton).click();
-
         //save as WebElement object
         WebElement ImageOneIsVisibleVerification = driver.findElement(By.cssSelector("img[alt='Obrazek 1"));
 
@@ -103,6 +100,7 @@ public class SeleniumWelcomeTest {
     //ToDo tests WebDriverWait
     //ToDo seperate 2 tests or more
     //ToDo check why mvn test not work corectly
+    //ToDo BeforeTest make in separate class
 }
 
 
