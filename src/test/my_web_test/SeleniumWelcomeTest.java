@@ -8,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
-
 import java.util.List;
 
 public class SeleniumWelcomeTest {
@@ -62,7 +61,7 @@ public class SeleniumWelcomeTest {
         String expectedURL = "https://www.jango.com/browse_music/genre/Recommended";
         String actualURL = driver.getCurrentUrl();
         Assert.assertEquals(actualURL, expectedURL, "Wrong URL address");
-        sleep(1000);
+        //TestUtils.sleep(1000);
         driver.navigate().back();
 
         //-------------------------------------  test to split
@@ -84,23 +83,16 @@ public class SeleniumWelcomeTest {
 
         driver.findElement(By.cssSelector("body > button")).click();
 
-        //sleep(2000);
+        TestUtils.sleep(2000);
         driver.quit();
     }
 
 
-    public static void sleep(int sleepTimeInMillis) {
-        try {
-            Thread.sleep(sleepTimeInMillis); // 5000 miliseconds = 5 seconds
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
     //ToDo tests WebDriverWait
     //ToDo seperate 2 tests or more
     //ToDo check why mvn test not work corectly
     //ToDo BeforeTest make in separate class
-}
 
 
