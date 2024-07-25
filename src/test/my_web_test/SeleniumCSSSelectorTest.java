@@ -66,28 +66,46 @@ public class SeleniumCSSSelectorTest {
         // LOOKING BY relation parent children (first element find)
         By findMultiTextH2 = By.cssSelector("div > h2");
         List<WebElement> textElements = driver.findElements(findMultiTextH2);
-
-
-        for (WebElement element : textElements) {
-            String text = element.getText();
-            System.out.println(text);
-        }
+        TestUtils.printAllList(textElements);
 
         // finding every element on emoji list (with using class or just ul)
         //By allEmotListElements = By.cssSelector("ul.emoticon-list li");
         By allEmotListElements = By.cssSelector("div ul");
         System.out.println("\n" + allEmotListElements + "\n");
         List<WebElement> elements = driver.findElements(allEmotListElements);
+        TestUtils.printAllList(elements);
+        System.out.println("\n");
 
-        // Print the text content of each item
-        for (WebElement element : elements) {
-            String text = element.getText();
-            System.out.println(text);
-        }
+        //same like before but just kids, not everything ToDo show that case in code
+        By elementsFromContainer = By.cssSelector("div > ul");
+        List<WebElement> test = driver.findElements(elementsFromContainer);
+        TestUtils.printAllList(test);
+        System.out.println("\n");
+
+        By firstInputLabel = By.cssSelector("input + label");
+        System.out.println(firstInputLabel);
+        List<WebElement> test2 = driver.findElements(firstInputLabel);
+        System.out.println(test2.size());
+
+        By allInputLabel = By.cssSelector("input ~ label");
+        System.out.println(allInputLabel);
+        List<WebElement> test3 = driver.findElements(allInputLabel);
+        System.out.println(test3.size());
+
+        System.out.println("\n-----------------------------------------------------------\n");
+
+        By combinSelector = By.cssSelector("img[alt='Losowe zdjęcie'");
+        driver.findElement(combinSelector);
+        System.out.println(combinSelector);
+
+
+
+
+
+
+
+
 
         driver.quit();
     }
-
-
-    //ToDo loop used twice,  it have to go to metod
 }

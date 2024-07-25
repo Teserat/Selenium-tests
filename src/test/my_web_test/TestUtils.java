@@ -1,5 +1,9 @@
 package my_web_test;
 
+import org.jetbrains.annotations.NotNull;
+import org.openqa.selenium.WebElement;
+import java.util.List;
+
 public class TestUtils {
 
 
@@ -11,4 +15,13 @@ public class TestUtils {
             e.printStackTrace();
         }
     }
+
+    public static void printAllList(@NotNull List<WebElement> data) {
+        // Print the text content of each item list webelement
+        for (WebElement element : data) {
+            String text = element.getText();
+            System.out.println(text);
+        }
+    }
+
 }
