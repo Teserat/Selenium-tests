@@ -53,7 +53,7 @@ public class SeleniumCSSSelectorTest {
         driver.findElement(cssName);
         System.out.println(cssName);
 
-        //finding every element on page + printing
+        //finding every element on page
         By allElementsOnPage = By.cssSelector("*");
         driver.findElement(allElementsOnPage);
         System.out.println(allElementsOnPage);
@@ -63,10 +63,12 @@ public class SeleniumCSSSelectorTest {
         driver.findElement(findTextRandomObrazki);
         System.out.println(findTextRandomObrazki + "\n");
 
-        // LOOKING BY relation parent children (first element find)
-        By findMultiTextH2 = By.cssSelector("div > h2");
+        // LOOKING BY relation parent children (all elements)
+        By findMultiTextH2 = By.cssSelector("div > ul");
         List<WebElement> textElements = driver.findElements(findMultiTextH2);
         TestUtils.printAllList(textElements);
+
+        System.out.println("\n-----------------------------------------------------------\n");
 
         // finding every element on emoji list (with using class or just ul)
         //By allEmotListElements = By.cssSelector("ul.emoticon-list li");
@@ -76,11 +78,13 @@ public class SeleniumCSSSelectorTest {
         TestUtils.printAllList(elements);
         System.out.println("\n");
 
-        //same like before but just kids, not everything ToDo show that case in code
+        //same like before but just kids, not everything - more in second CSS class
         By elementsFromContainer = By.cssSelector("div > ul");
         List<WebElement> test = driver.findElements(elementsFromContainer);
         TestUtils.printAllList(test);
         System.out.println("\n");
+
+        System.out.println("\n-----------------------------------------------------------\n");
 
         By firstInputLabel = By.cssSelector("input + label");
         System.out.println(firstInputLabel);
@@ -97,13 +101,6 @@ public class SeleniumCSSSelectorTest {
         By combinSelector = By.cssSelector("img[alt='Losowe zdjęcie'");
         driver.findElement(combinSelector);
         System.out.println(combinSelector);
-
-
-
-
-
-
-
 
 
         driver.quit();

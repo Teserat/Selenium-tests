@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+
 import java.util.List;
 
 public class SeleniumWelcomeTest {
@@ -88,11 +89,10 @@ public class SeleniumWelcomeTest {
     }
 
 
-
-    }
-    //ToDo tests WebDriverWait
-    //ToDo seperate 2 tests or more
-    //ToDo check why mvn test not work corectly
-    //ToDo BeforeTest make in separate class
+}
+//ToDo tests WebDriverWait
+//ToDo seperate 2 tests or more
+//ToDo check why mvn test not work corectly
+//ToDo BeforeTest make in separate class
 
 
