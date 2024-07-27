@@ -86,11 +86,13 @@ public class SeleniumCSSSelectorTest {
 
         System.out.println("\n-----------------------------------------------------------\n");
 
+        // first element found in html
         By firstInputLabel = By.cssSelector("input + label");
         System.out.println(firstInputLabel);
         List<WebElement> test2 = driver.findElements(firstInputLabel);
         System.out.println(test2.size());
 
+        // every element found in html
         By allInputLabel = By.cssSelector("input ~ label");
         System.out.println(allInputLabel);
         List<WebElement> test3 = driver.findElements(allInputLabel);
@@ -101,6 +103,35 @@ public class SeleniumCSSSelectorTest {
         By combinSelector = By.cssSelector("img[alt='Losowe zdjęcie'");
         driver.findElement(combinSelector);
         System.out.println(combinSelector);
+
+        //looking by part
+        By partOfElementSelector = By.cssSelector("a[href*='tory.pl'");
+        driver.findElement(partOfElementSelector).click();
+        TestUtils.sleep(2000);
+        driver.switchTo().window(driver.getWindowHandles().iterator().next());
+        System.out.println(partOfElementSelector);
+
+        //looking by beginning of element
+        By beginningOfElementSelector = By.cssSelector("a[href^='https://chamsko'");
+        driver.findElement(beginningOfElementSelector).click();
+        TestUtils.sleep(2000);
+        driver.switchTo().window(driver.getWindowHandles().iterator().next());
+        System.out.println(beginningOfElementSelector);
+
+        //looking by end of element
+        By endOfElementSelector = By.cssSelector("a[href$='er.org'");
+        driver.findElement(endOfElementSelector).click();
+        TestUtils.sleep(2000);
+        driver.switchTo().window(driver.getWindowHandles().iterator().next());
+        System.out.println(endOfElementSelector);
+
+        //looking by child first/last/third
+        By firstEmotChild = By.cssSelector("li:first-child");
+        By lastEmotChild = By.cssSelector("li:last-child");
+        By thirdEmotChild = By.cssSelector("li:nth-child(3)");
+        driver.findElement(firstEmotChild);
+        driver.findElement(lastEmotChild);
+        driver.findElement(thirdEmotChild);
 
 
         driver.quit();
