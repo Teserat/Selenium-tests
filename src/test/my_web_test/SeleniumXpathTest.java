@@ -28,11 +28,11 @@ public class SeleniumXpathTest {
     @Test
     public void seleniumXpathTest() {
 
-        //By button = By.xpath("//button[@id='testID1']");
-        By button = By.xpath("//*[@id=\"testID1\"]");
-        //*[@id="testID1"]
-        WebElement clickOnRozwin = driver.findElement(button);
-
+        //better precision with second case
+        //By button1 = By.xpath("//*[@id=\"testID1\"]");
+        By button1 = By.xpath("//label[@id=\"testID1\"]");
+        WebElement clickOnPokazObrazek1 = driver.findElement(button1);
+        clickOnPokazObrazek1.click();
 
         TestUtils.sleep(2000);
         driver.quit();
