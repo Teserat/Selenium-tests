@@ -3,6 +3,5 @@ public class Main {
         System.out.println("test");
     }
 
-    //Przerobić wszystkie metody testowe na @Test
 }
 

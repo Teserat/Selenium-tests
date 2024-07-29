@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class SeleniumXpathTest {
 
     // tests on a specially prepared website
@@ -34,7 +36,22 @@ public class SeleniumXpathTest {
         WebElement clickOnPokazObrazek1 = driver.findElement(button1);
         clickOnPokazObrazek1.click();
 
-        TestUtils.sleep(2000);
+        //Others
+        //
+
+
+        // difrence with  double // and single /
+        //double give all / single give first
+        driver.get("https://teserat.github.io/welcome/testWeb1.html");
+        By element1 = By.xpath("/html/body/div");
+        By element2 = By.xpath("/html/body//div");
+        List <WebElement> test1 = driver.findElements(element1);
+        List <WebElement> test2 = driver.findElements(element2);
+        System.out.println(element1 + " : " +test1.size());
+        System.out.println(element2 + " : " +test2.size());
+
+
+        TestUtils.sleep(1000);
         driver.quit();
 
     }
