@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.List;
 
-public class SeleniumWelcomeTest {
+public class SeleniumTest {
     // tests on a specially prepared website
     WebDriver driver;
 

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class SeleniumCSSSelectorTest2 {
+public class SeleniumCSSSelectorSecondTest {
 
     // tests on a specially prepared website
     WebDriver driver;
