@@ -37,6 +37,8 @@ public class SeleniumCSSSelectorSecondTest {
     public void test() {
 
         driver.findElement(By.cssSelector("#IDTestowaStrona1")).click();
+        driver.findElement(By.cssSelector("#IDTestowaStrona1")).click();
+
         //div ul should give all vs div > ul only child
         //and like we see, it's not working
 
