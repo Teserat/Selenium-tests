@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -17,8 +18,13 @@ public class SeleniumCSSSelectorTest {
     @BeforeTest
     public void setUp() {
         WebDriverManager.chromedriver().setup();
+
+        // workaround for chromedriver v127
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-search-engine-choice-screen");
+
         //Initialize Chrome options
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.manage().
                 window().
                 maximize();
