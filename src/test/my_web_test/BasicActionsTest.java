@@ -2,14 +2,15 @@ package my_web_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class BasicActionsTest {
     WebDriver driver;
@@ -27,16 +28,17 @@ public class BasicActionsTest {
         driver.manage().
                 window().
                 maximize();
-        //driver.get("http://127.0.0.1:5500/index.html"); //local host
-        driver.get("https://teserat.github.io/welcome/");
+        driver.get("http://127.0.0.1:5500/index.html"); //local host
+        //driver.get("https://teserat.github.io/welcome/");
     }
 
     @Test
-    public void performAction1() {
+    public void performActionClick() {
 
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
         basicPageLink.click();
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        System.out.println("Site : " + elementsPageLink.getText());
         elementsPageLink.click();
         driver.findElement(By.id("clickOnMe")).click();
 
@@ -45,11 +47,12 @@ public class BasicActionsTest {
     }
 
     @Test
-    public void performAction2() {
+    public void performActionEnteringFields() {
 
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
         basicPageLink.click();
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        System.out.println("Site : " + elementsPageLink.getText());
         elementsPageLink.click();
         WebElement name = driver.findElement(By.id("fname"));
         name.sendKeys("Szymon");
@@ -72,11 +75,12 @@ public class BasicActionsTest {
     }
 
     @Test
-    public void performAction3() {
+    public void performActionCheckboxAndRadioButtons() {
 
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
         basicPageLink.click();
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        System.out.println("Site : " + elementsPageLink.getText());
         elementsPageLink.click();
         TestUtils.sleep(500);
         driver.findElement(By.cssSelector("[type='checkbox'")).click();
@@ -87,5 +91,36 @@ public class BasicActionsTest {
         driver.quit();
     }
 
+    @Test
+    public void performActionOnSelect() {
 
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        System.out.println("Site : " + elementsPageLink.getText());
+        elementsPageLink.click();
+
+
+
+        TestUtils.sleep(500);
+        WebElement selectDrink = driver.findElement(By.cssSelector("select"));
+        //Work on selector Class
+        Select drink = new Select(selectDrink);
+        drink.selectByIndex(0);
+        TestUtils.sleep(500);
+        drink.selectByVisibleText("Muszynianka");
+        TestUtils.sleep(500);
+        drink.selectByValue("pepsi");
+
+        //Get all elements on select
+        List<WebElement> options = drink.getOptions();
+
+        for (WebElement option : options){
+            System.out.println(option.getText());
+        }
+
+        TestUtils.sleep(1500);
+        driver.quit();
+    }
+    //ToDo add timer and counter to "Site : TestSide2 - mix elements"
 }
