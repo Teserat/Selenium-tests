@@ -2,6 +2,7 @@ package my_web_test;
 
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -23,6 +24,17 @@ public class TestUtils {
             String text = element.getText();
             System.out.println(text);
         }
+    }
+    //Check if text webelement is on select list of elements
+    public static boolean checkSelectAssertion(String optionText, WebElement element){
+        Select select = new Select(element);
+        //get all list
+        List<WebElement> options = select.getOptions();
+        for(WebElement option : options) {
+            if(option.getText().equals(optionText))
+                return true;
+        }
+        return false;
     }
 
 }
