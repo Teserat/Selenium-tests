@@ -1,9 +1,7 @@
 package my_web_test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
@@ -29,12 +27,12 @@ public class BasicActionsTest {
         driver.manage().
                 window().
                 maximize();
-        driver.get("http://127.0.0.1:5500/index.html"); //local host
-        //driver.get("https://teserat.github.io/welcome/");
+        //driver.get("http://127.0.0.1:5500/index.html"); //local host
+        driver.get("https://teserat.github.io/welcome/");
     }
 
     @Test
-    public void performActionClick() {
+    public void performActionClickAndAlert() {
 
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
         basicPageLink.click();
@@ -43,8 +41,22 @@ public class BasicActionsTest {
         elementsPageLink.click();
         driver.findElement(By.id("clickOnMe")).click();
 
-        TestUtils.sleep(1500);
+        Alert alert = driver.switchTo().alert();
+        System.out.println("Alert mesange : " + alert.getText());
+        TestUtils.sleep(800);
+        alert.accept();
+
+        driver.findElement(By.id("clickOnMe2")).click();
+        TestUtils.sleep(800);
+        alert.dismiss();
+
+        driver.findElement(By.id("clickOnMe3")).click();
+        TestUtils.sleep(800);
+        alert.sendKeys("world!");
+
+        TestUtils.sleep(800);
         driver.quit();
+
     }
 
     @Test
@@ -71,7 +83,7 @@ public class BasicActionsTest {
         //css selector
         driver.findElement(By.cssSelector("input[type='submit'")).click();
 
-        TestUtils.sleep(1000);
+        TestUtils.sleep(800);
         driver.quit();
     }
 
@@ -88,7 +100,7 @@ public class BasicActionsTest {
         TestUtils.sleep(400);
         driver.findElement(By.cssSelector("[value='option3'")).click();
 
-        TestUtils.sleep(1500);
+        TestUtils.sleep(800);
         driver.quit();
     }
 
@@ -120,7 +132,7 @@ public class BasicActionsTest {
             System.out.println(option.getText());
         }
 
-        TestUtils.sleep(1500);
+        TestUtils.sleep(800);
         driver.quit();
     }
 
