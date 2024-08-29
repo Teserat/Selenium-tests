@@ -1,39 +1,25 @@
 package my_web_test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Set;
 
 public class WorkOnTwoBrowsersTest {
-
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-
-        // workaround for chromedriver v127
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-search-engine-choice-screen");
-
-        //Initialize Chrome options
-        driver = new ChromeDriver(options);
-        driver.manage().
-                window().
-                maximize();
-        //driver.get("http://127.0.0.1:5500/index.html"); //local host
-        driver.get("https://teserat.github.io/welcome/");
+        driver = WebDriverFactory.initializeChromeDriver();
+        driver.get("http://127.0.0.1:5500/index.html"); //local host
+        //driver.get("https://teserat.github.io/welcome/");
     }
 
     @Test
-    public void webTest (){
+    public void webTest() {
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
         basicPageLink.click();
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide3 - newBrowser"));
@@ -46,8 +32,8 @@ public class WorkOnTwoBrowsersTest {
 
         //change work place for test
         Set<String> windowsNames = driver.getWindowHandles();
-        for(String window : windowsNames){
-            if(!window.equals(currentWindow)){
+        for (String window : windowsNames) {
+            if (!window.equals(currentWindow)) {
                 driver.switchTo().window(window);
             }
         }
@@ -66,6 +52,25 @@ public class WorkOnTwoBrowsersTest {
 
         TestUtils.sleep(1500);
         driver.quit();
+    }
+
+    @Test
+    public void webTestIframe() {
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide3 - newBrowser"));
+        System.out.println("Site : " + elementsPageLink.getText());
+        elementsPageLink.click();
+
+        driver.switchTo().frame(0);
+        driver.findElement(By.id("fname")).sendKeys("Czupakabra!!!");
+        driver.switchTo().defaultContent();
+        System.out.println(driver.findElement((By.tagName("h1"))).getText());
+
+        TestUtils.sleep(1500);
+        driver.quit();
 
     }
+
+
 }

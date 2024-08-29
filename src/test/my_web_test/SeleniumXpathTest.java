@@ -79,10 +79,10 @@ public class SeleniumXpathTest {
         driver.get("https://teserat.github.io/welcome/testWeb1.html");
         By element1 = By.xpath("/html/body/div");
         By element2 = By.xpath("/html/body//div");
-        List <WebElement> test1 = driver.findElements(element1);
-        List <WebElement> test2 = driver.findElements(element2);
-        System.out.println(element1 + " : " +test1.size());
-        System.out.println(element2 + " : " +test2.size());
+        List<WebElement> test1 = driver.findElements(element1);
+        List<WebElement> test2 = driver.findElements(element2);
+        System.out.println(element1 + " : " + test1.size());
+        System.out.println(element2 + " : " + test2.size());
 
 
         TestUtils.sleep(1000);

@@ -114,7 +114,6 @@ public class BasicActionsTest {
         elementsPageLink.click();
 
 
-
         TestUtils.sleep(500);
         WebElement selectDrink = driver.findElement(By.cssSelector("select"));
         //Work on selector Class
@@ -128,7 +127,7 @@ public class BasicActionsTest {
         //Get all elements on select
         List<WebElement> options = drink.getOptions();
 
-        for (WebElement option : options){
+        for (WebElement option : options) {
             System.out.println(option.getText());
         }
 
@@ -179,7 +178,7 @@ public class BasicActionsTest {
 
         WebElement selectValue = driver.findElement(By.cssSelector("select"));
         System.out.println(selectValue.getAttribute("value"));
-        Assert.assertEquals(selectValue.getAttribute("value"),"herbata");
+        Assert.assertEquals(selectValue.getAttribute("value"), "herbata");
 
         TestUtils.sleep(800);
         driver.quit();
