@@ -1,34 +1,20 @@
 package my_web_test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 
 import java.util.List;
 
 public class SeleniumTest {
-    // tests on a specially prepared website
     WebDriver driver;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-
-        // workaround for chromedriver v127
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-search-engine-choice-screen");
-
-        //Initialize Chrome options
-        driver = new ChromeDriver(options);
-        driver.manage().
-                window().
-                maximize();
+        driver = WebDriverFactory.initializeChromeDriver();
         //driver.get("http://127.0.0.1:5500/index.html"); //local host
         driver.get("https://teserat.github.io/welcome/");
     }

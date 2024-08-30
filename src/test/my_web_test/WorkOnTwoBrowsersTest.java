@@ -14,8 +14,8 @@ public class WorkOnTwoBrowsersTest {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.initializeChromeDriver();
-        driver.get("http://127.0.0.1:5500/index.html"); //local host
-        //driver.get("https://teserat.github.io/welcome/");
+       //driver.get("http://127.0.0.1:5500/index.html"); //local host
+        driver.get("https://teserat.github.io/welcome/");
     }
 
     @Test
@@ -62,7 +62,13 @@ public class WorkOnTwoBrowsersTest {
         System.out.println("Site : " + elementsPageLink.getText());
         elementsPageLink.click();
 
-        driver.switchTo().frame(0);
+        //driver.switchTo().frame(0); //index
+        //---or selector
+        WebElement iframe = driver.findElement(By.cssSelector("[src='testWeb2.html']"));
+        driver.switchTo().frame(iframe);
+        //---or id or name
+        //driver.switchTo().frame("testIframe");
+
         driver.findElement(By.id("fname")).sendKeys("Czupakabra!!!");
         driver.switchTo().defaultContent();
         System.out.println(driver.findElement((By.tagName("h1"))).getText());
