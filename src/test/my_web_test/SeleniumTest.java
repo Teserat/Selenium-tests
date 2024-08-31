@@ -3,10 +3,10 @@ package my_web_test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-
 import java.util.List;
 
 public class SeleniumTest {
@@ -76,7 +76,10 @@ public class SeleniumTest {
 
         driver.findElement(By.cssSelector("body > button")).click();
 
-        TestUtils.sleep(2000);
+    }
+    @AfterMethod
+    public  void onTestEnd(){
+        TestUtils.sleep(800);
         driver.quit();
     }
 

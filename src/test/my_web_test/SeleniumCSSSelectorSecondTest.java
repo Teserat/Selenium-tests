@@ -3,6 +3,7 @@ package my_web_test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -51,7 +52,10 @@ public class SeleniumCSSSelectorSecondTest {
         /*
             ToDo find info why it happens or solution/fix // maybe test with other browser
         */
-        TestUtils.sleep(1000);
+    }
+    @AfterMethod
+    public  void onTestEnd(){
+        TestUtils.sleep(800);
         driver.quit();
     }
 }

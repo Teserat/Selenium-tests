@@ -3,6 +3,7 @@ package my_web_test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -41,9 +42,6 @@ public class BasicActionsTest {
         TestUtils.sleep(800);
         alert.sendKeys("world!");
 
-        TestUtils.sleep(800);
-        driver.quit();
-
     }
 
     @Test
@@ -70,8 +68,6 @@ public class BasicActionsTest {
         //css selector
         driver.findElement(By.cssSelector("input[type='submit'")).click();
 
-        TestUtils.sleep(800);
-        driver.quit();
     }
 
     @Test
@@ -87,8 +83,6 @@ public class BasicActionsTest {
         TestUtils.sleep(400);
         driver.findElement(By.cssSelector("[value='option3'")).click();
 
-        TestUtils.sleep(800);
-        driver.quit();
     }
 
     @Test
@@ -118,8 +112,6 @@ public class BasicActionsTest {
             System.out.println(option.getText());
         }
 
-        TestUtils.sleep(800);
-        driver.quit();
     }
 
     @Test
@@ -149,9 +141,6 @@ public class BasicActionsTest {
         //Assert.assertTrue(TestUtils.checkSelectAssertion("Kawa", selectDrink));  // Turn off assertion to not crash test
         System.out.println("Is Kawa on the list : " + TestUtils.checkSelectAssertion("Kawa", selectDrink));
 
-
-        TestUtils.sleep(500);
-        driver.quit();
     }
 
     @Test
@@ -167,8 +156,6 @@ public class BasicActionsTest {
         System.out.println(selectValue.getAttribute("value"));
         Assert.assertEquals(selectValue.getAttribute("value"), "herbata");
 
-        TestUtils.sleep(800);
-        driver.quit();
     }
 
     @Test
@@ -183,6 +170,9 @@ public class BasicActionsTest {
         WebElement hidden = driver.findElement(By.cssSelector("h4"));
         System.out.println(hidden.getAttribute("textContent"));
 
+    }
+    @AfterMethod
+    public  void onTestEnd(){
         TestUtils.sleep(800);
         driver.quit();
     }

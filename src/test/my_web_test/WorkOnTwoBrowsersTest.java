@@ -3,6 +3,7 @@ package my_web_test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -50,8 +51,6 @@ public class WorkOnTwoBrowsersTest {
         driver.findElement(By.linkText("Kliknij, aby otworzyć nowe okno"));
         driver.navigate().back();
 
-        TestUtils.sleep(1500);
-        driver.quit();
     }
 
     @Test
@@ -73,10 +72,10 @@ public class WorkOnTwoBrowsersTest {
         driver.switchTo().defaultContent();
         System.out.println(driver.findElement((By.tagName("h1"))).getText());
 
-        TestUtils.sleep(1500);
-        driver.quit();
-
     }
-
-
+    @AfterMethod
+    public  void onTestEnd(){
+        TestUtils.sleep(800);
+        driver.quit();
+    }
 }
