@@ -11,8 +11,8 @@ public class ExecutorTest {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.initializeChromeDriver();
-        driver.get("http://127.0.0.1:5500/index.html"); //local host
-        //driver.get("https://teserat.github.io/welcome/");
+        //driver.get("http://127.0.0.1:5500/index.html"); //local host
+        driver.get("https://teserat.github.io/welcome/");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ExecutorTest {
         TestUtils.sleep(500);
         WebElement element = driver.findElement(By.cssSelector("[name='fname']"));
 
-        //value addition (when sendKeys don't work
+        //value addition (when sendKeys don't work)
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].setAttribute('value','Grzesiek');", element);
 

@@ -3,6 +3,9 @@ package my_web_test;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class TestUtils {
@@ -36,4 +39,18 @@ public class TestUtils {
         }
         return false;
     }
+
+    public static String dataStamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss:SSS");
+        String currentTime = sdf.format(new Date());
+        return currentTime;
+    }
+
+    public static String simpleDataStamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH_mm_ss_SSS");
+        String currentTime = sdf.format(new Date());
+        return currentTime;
+    }
+
+
 }

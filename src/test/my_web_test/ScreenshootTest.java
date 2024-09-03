@@ -5,10 +5,8 @@ import org.openqa.selenium.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.io.File;
 import java.io.IOException;
-
 
 public class ScreenshootTest {
     WebDriver driver;
@@ -21,7 +19,7 @@ public class ScreenshootTest {
     }
 
     @Test
-    public void webTest() throws IOException {
+    public void takesScreenshotTest() throws IOException {
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
         basicPageLink.click();
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide4 - uploading file"));
@@ -31,12 +29,14 @@ public class ScreenshootTest {
         //cast driver to TakeScreenshot and save screenshot to file
         TakesScreenshot screenshot = (TakesScreenshot) driver;
         File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
-
-        FileUtils.copyFile(srcFile, new File("src/resources/screenshot.png"));
+        String data = TestUtils.simpleDataStamp();
+        String filename = "screenshot_" + data + ".png";
+        FileUtils.copyFile(srcFile, new File("src/resources/" + filename));
 
     }
+
     @AfterMethod
-    public  void onTestEnd(){
+    public void onTestEnd() {
         TestUtils.sleep(800);
         driver.quit();
     }
