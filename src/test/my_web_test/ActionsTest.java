@@ -18,7 +18,6 @@ public class ActionsTest {
         driver.get("https://teserat.github.io/welcome/");
     }
 
-
     @Test
     public void performActionRightMouseClick() {
 
@@ -32,6 +31,22 @@ public class ActionsTest {
         Actions actions = new Actions(driver);
         //actions.contextClick().perform();
         actions.contextClick(driver.findElement(By.cssSelector("[type='text']"))).perform();
+
+    }
+
+    @Test
+    public void performActionDoubleMouseClick() {
+
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        System.out.println("Site : " + elementsPageLink.getText());
+        elementsPageLink.click();
+
+        //class actions, parameter driver
+        Actions actions = new Actions(driver);
+        //actions.contextClick().perform();
+        actions.doubleClick(driver.findElement(By.id("dubleClick"))).perform();
 
     }
 
