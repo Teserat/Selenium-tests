@@ -50,8 +50,24 @@ public class ActionsTest {
 
     }
 
+    @Test
+    public void performActionMouseover() {
+
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        System.out.println("Site : " + elementsPageLink.getText());
+        elementsPageLink.click();
+
+        //class actions, parameter driver
+        Actions actions = new Actions(driver);
+        //actions.contextClick().perform();
+        actions.moveToElement(driver.findElement(By.tagName("h1"))).perform();
+
+    }
+
     @AfterMethod
-    public  void onTestEnd(){
+    public void onTestEnd() {
         TestUtils.sleep(800);
         driver.quit();
     }
