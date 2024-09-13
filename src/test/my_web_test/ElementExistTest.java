@@ -36,6 +36,23 @@ public class ElementExistTest {
         System.out.println(driver.findElement(By.xpath("//*[contains(text(), 'there is nothing here, keep scrolling')]")).isDisplayed());//false
 
     }
+    @Test
+    public void elementDisabled() {
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        elementsPageLink.click();
+
+        //ToDo add assert
+        //false
+        System.out.println(driver.findElement(By.id("clickOnMe99")).isEnabled());
+        //true
+        System.out.println(driver.findElement(By.id("clickOnMe2")).isEnabled());
+
+
+    }
+
+
     public boolean elementExist(By locator){
         try {
             driver.findElement(locator);
