@@ -18,6 +18,7 @@ public class ElementExistTest {
         //driver.get("http://127.0.0.1:5500/index.html"); //local host
         driver.get("https://teserat.github.io/welcome/");
     }
+
     @Test
     public void elementExist() {
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
@@ -37,6 +38,7 @@ public class ElementExistTest {
         System.out.println(driver.findElement(By.xpath("//*[contains(text(), 'there is nothing here, keep scrolling')]")).isDisplayed());//false
 
     }
+
     @Test
     public void elementDisabled() {
         WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
@@ -44,27 +46,23 @@ public class ElementExistTest {
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
         elementsPageLink.click();
 
-        //ToDo add assert
         //false
-        WebElement enabledElement =driver.findElement(By.id("clickOnMe99"));
+        WebElement enabledElement = driver.findElement(By.id("clickOnMe99"));
         System.out.println(enabledElement.isEnabled());
-        Assert.assertFalse(enabledElement.isEnabled(), "Element powinien być wyłączony, ale jest włączony");
+        Assert.assertFalse(enabledElement.isEnabled(), "The item should be disabled");
 
         //true
-        WebElement notEnabledElement =driver.findElement(By.id("clickOnMe2"));
+        WebElement notEnabledElement = driver.findElement(By.id("clickOnMe2"));
         System.out.println(notEnabledElement.isEnabled());
-        Assert.assertTrue(notEnabledElement.isEnabled(), "Element powinien być wyświetlony, ale nie jest");
-
-
+        Assert.assertTrue(notEnabledElement.isEnabled(), "The item should be enabled");
 
     }
 
-
-    public boolean elementExist(By locator){
+    public boolean elementExist(By locator) {
         try {
             driver.findElement(locator);
             return true;
-        }catch (NoSuchElementException ex){
+        } catch (NoSuchElementException ex) {
             return false;
         }
     }
@@ -73,9 +71,8 @@ public class ElementExistTest {
         return driver.findElements(locator).size() > 0;
     }
 
-
     @AfterMethod
-    public  void onTestEnd(){
+    public void onTestEnd() {
         TestUtils.sleep(800);
         driver.quit();
     }
