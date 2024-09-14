@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -45,9 +46,15 @@ public class ElementExistTest {
 
         //ToDo add assert
         //false
-        System.out.println(driver.findElement(By.id("clickOnMe99")).isEnabled());
+        WebElement enabledElement =driver.findElement(By.id("clickOnMe99"));
+        System.out.println(enabledElement.isEnabled());
+        Assert.assertFalse(enabledElement.isEnabled(), "Element powinien być wyłączony, ale jest włączony");
+
         //true
-        System.out.println(driver.findElement(By.id("clickOnMe2")).isEnabled());
+        WebElement notEnabledElement =driver.findElement(By.id("clickOnMe2"));
+        System.out.println(notEnabledElement.isEnabled());
+        Assert.assertTrue(notEnabledElement.isEnabled(), "Element powinien być wyświetlony, ale nie jest");
+
 
 
     }
