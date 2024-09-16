@@ -58,6 +58,21 @@ public class ElementExistTest {
 
     }
 
+    @Test
+    public void checkboxSelectTest() {
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
+        elementsPageLink.click();
+
+        WebElement enabledElement = driver.findElement(By.cssSelector("[type='checkbox"));
+        //enabledElement.click();
+        Assert.assertFalse(enabledElement.isSelected(), "The item should not be selected");
+        enabledElement.click();
+        Assert.assertTrue(enabledElement.isSelected(), "The item should be selected");
+
+    }
+
     public boolean elementExist(By locator) {
         try {
             driver.findElement(locator);
