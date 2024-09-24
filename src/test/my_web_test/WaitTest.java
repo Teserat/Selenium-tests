@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +14,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.function.Function;
 
 public class WaitTest {
 
@@ -90,6 +90,7 @@ public class WaitTest {
         System.out.println(test.getText());
         Assert.assertEquals(test.getText(), "Hello");
     }
+
     //test with FluentWait - no exceptions inside, like in WebDriverWait
     @Test
     public void verificationVisibilityTextWithFluentWait() {
@@ -109,10 +110,45 @@ public class WaitTest {
         Assert.assertEquals(test.getText(), "Hello");
     }
 
+    //Test with wait with own expression
+    @Test
+    public void verificationVisibilityTextWithAddingElementList() {
+
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
+        elementsPageLink.click();
+
+        waitForElementToExist(By.xpath("//div[text()='Hello']"));
+    }
     //ExpectedConditions
 
+
+    //Method used in tests
+    public void waitForElementToExist(By locator) {
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.withTimeout(Duration.ofSeconds(10));
+        wait.pollingEvery(Duration.ofSeconds(1));
+        wait.ignoring(NoSuchElementException.class);
+
+        //wait until happen (if not = infinity loop)
+        wait.until(new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver Boolean) {
+                List<WebElement> elements = driver.findElements(locator);
+                if (elements.size() > 0) {
+                    System.out.println("Element is on website");
+                    return true;
+                } else {
+                    System.out.println("Element is not on website");
+                    return false;
+                }
+            }
+        });
+    }
+
     @AfterMethod
-    public  void onTestEnd(){
+    public void onTestEnd() {
         TestUtils.sleep(800);
         driver.quit();
     }
