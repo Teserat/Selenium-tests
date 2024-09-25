@@ -121,6 +121,20 @@ public class WaitTest {
 
         waitForElementToExist(By.xpath("//div[text()='Hello']"));
     }
+
+    //Test with wait with own expression (change for lambda expression)
+    @Test
+    public void verificationVisibilityTextWithAddingElementList2() {
+
+        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
+        basicPageLink.click();
+        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
+        elementsPageLink.click();
+
+        waitForElementToExistLambdaMethod(By.xpath("//div[text()='Hello']"));
+    }
+
+    //ToDo maybe here or in other class
     //ExpectedConditions
 
 
@@ -143,6 +157,24 @@ public class WaitTest {
                     System.out.println("Element is not on website");
                     return false;
                 }
+            }
+        });
+    }
+    //Same Method used in tests - just converted part of code to lambda
+    public void waitForElementToExistLambdaMethod(By locator) {
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.withTimeout(Duration.ofSeconds(10));
+        wait.pollingEvery(Duration.ofSeconds(1));
+        wait.ignoring(NoSuchElementException.class);
+
+        wait.until((driver) -> {
+            List<WebElement> elements = driver.findElements(locator);
+            if (elements.size() > 0) {
+                System.out.println("Element is on website");
+                return true;
+            } else {
+                System.out.println("Element is not on website");
+                return false;
             }
         });
     }
