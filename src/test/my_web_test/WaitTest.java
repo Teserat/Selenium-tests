@@ -134,10 +134,6 @@ public class WaitTest {
         waitForElementToExistLambdaMethod(By.xpath("//div[text()='Hello']"));
     }
 
-    //ToDo maybe here or in other class
-    //ExpectedConditions
-
-
     //Method used in tests
     public void waitForElementToExist(By locator) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver);
