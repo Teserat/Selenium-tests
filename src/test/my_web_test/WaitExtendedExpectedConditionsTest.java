@@ -18,8 +18,8 @@ public class WaitExtendedExpectedConditionsTest {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.initializeChromeDriver();
-        driver.get("http://127.0.0.1:5500/index.html"); //local host
-        //driver.get("https://teserat.github.io/welcome/");
+        //driver.get("http://127.0.0.1:5500/index.html"); //local host
+        driver.get("https://teserat.github.io/welcome/");
     }
     @Test
     public void visibilityOfElementLocatedTest() {
@@ -64,7 +64,19 @@ public class WaitExtendedExpectedConditionsTest {
         driver.switchTo().alert().accept();
     }
 
+    @Test
+    public void elementToBeOnModal() {
 
+        driver.findElement(By.linkText("Rozchodniak")).click();
+        driver.findElement(By.linkText("TestSide7 - Okno Modalne")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.findElement(By.xpath("//button[text()='Po naciśnięciu guzika otworzy się okno modalne']")).click();
+
+        WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myModal")));
+        Assert.assertTrue(modal.isDisplayed(), "Modal should be visible");
+
+    }
 
     @AfterMethod
     public void onTestEnd() {
