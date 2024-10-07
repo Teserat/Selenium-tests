@@ -1,6 +1,7 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -22,8 +23,9 @@ public class HardAssertionsTest {
         WebElement elementsPageLink = driver.findElement(By.linkText("TestSide5 - mix elements 2"));
         elementsPageLink.click();
     }
+
     @Test
-    public void assertEqualsTest(){
+    public void assertEqualsTest() {
         String expectedTitle = "Strona testowa z wszystkimi elementami HTML";
         System.out.println(driver.getTitle());
         System.out.println(driver.getCurrentUrl());
@@ -31,17 +33,44 @@ public class HardAssertionsTest {
     }
 
     @Test
-    public void assertIsDisplayedTest(){
+    public void assertIsDisplayedTest() {
         WebElement element = driver.findElement(By.xpath("/html/body/form/fieldset/button[1]"));
         Assert.assertTrue(element.isDisplayed(), "Element nie jest widoczny!");
     }
 
     @Test
-    public void verifyElementExistsTest() {
-            driver.findElement(By.xpath("//h1"));
-            Assert.assertTrue(true, "Element został znaleziony!");
+    public void assertTrueTest() {
+        driver.findElement(By.xpath("//h1"));
+        Assert.assertTrue(true, "Element został znaleziony!");
     }
 
+    @Test
+    public void assertTrue2Test() {
+
+        try {
+            driver.findElement(By.xpath("//h1"));
+            Assert.assertTrue(true, "Element został znaleziony!");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Element nie istnieje na stronie!");
+        }
+    }
+
+    @Test
+    public void assertFalse() {
+        WebElement element = driver.findElement(By.xpath("/html/body/form/fieldset/button[1]"));
+        Assert.assertFalse(element.isSelected(), "Przycisk 'Submit' jest widoczny, co jest nieoczekiwane!");
+
+    }
+
+    @Test
+    public void assertNotNull() {
+
+    }
+
+    @Test
+    public void assertNull() {
+
+    }
 
     @AfterMethod
     public void onTestEnd() {
