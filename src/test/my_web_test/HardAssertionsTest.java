@@ -35,41 +35,41 @@ public class HardAssertionsTest {
     @Test
     public void assertIsDisplayedTest() {
         WebElement element = driver.findElement(By.xpath("/html/body/form/fieldset/button[1]"));
-        Assert.assertTrue(element.isDisplayed(), "Element nie jest widoczny!");
+        Assert.assertTrue(element.isDisplayed(), "Element is not visible!");
     }
 
-    @Test
-    public void assertTrueTest() {
-        driver.findElement(By.xpath("//h1"));
-        Assert.assertTrue(true, "Element został znaleziony!");
-    }
-
-    @Test
-    public void assertTrue2Test() {
-
+    @Test  //not usable, better isDisplayed
+    public void assertFailTest() {
         try {
             driver.findElement(By.xpath("//h1"));
-            Assert.assertTrue(true, "Element został znaleziony!");
         } catch (NoSuchElementException e) {
-            Assert.fail("Element nie istnieje na stronie!");
+            Assert.fail("Element not exist!");
         }
     }
 
     @Test
-    public void assertFalse() {
+    public void assertFalseTest() {
         WebElement element = driver.findElement(By.xpath("/html/body/form/fieldset/button[1]"));
-        Assert.assertFalse(element.isSelected(), "Przycisk 'Submit' jest widoczny, co jest nieoczekiwane!");
+        Assert.assertFalse(element.isSelected(), "Element button is selected?!");
+    }
+
+    @Test
+    public void assertNull() {
+        WebElement inputElement = driver.findElement(By.id("pustePole"));
+
+        String placeholder = inputElement.getAttribute("placeholder");
+        if ("".equals(placeholder)) {//forced null if html gives wrong format
+            placeholder = null;
+        }
+        Assert.assertNull(placeholder, "expectet value null in 'placeholder', but it is not null!");
 
     }
 
     @Test
     public void assertNotNull() {
-
-    }
-
-    @Test
-    public void assertNull() {
-
+        driver.findElement(By.xpath("//h1"));
+        WebElement element = driver.findElement(By.xpath("//h1"));
+        Assert.assertNotNull(element, "Element is null!");
     }
 
     @AfterMethod
@@ -84,3 +84,4 @@ public class HardAssertionsTest {
 //ToDo maybe some changes in base class with maintain WebDriver driver; driver initialization method just to pic one; or more reusable things
 //ToDo add better selectors
 //ToDo add some testWithAssertFail
+//ToDo maybe config  - config.properties - for some fast switches like in waits/sleeps?
