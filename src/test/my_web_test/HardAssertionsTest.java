@@ -83,5 +83,5 @@ public class HardAssertionsTest {
 //ToDo in class that all are in same page change page link in BeforeMethod
 //ToDo maybe some changes in base class with maintain WebDriver driver; driver initialization method just to pic one; or more reusable things
 //ToDo add better selectors
-//ToDo add some testWithAssertFail
+//Add after
 //ToDo maybe config  - config.properties - for some fast switches like in waits/sleeps?
