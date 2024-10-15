@@ -64,6 +64,5 @@ public class UploadFileTest {
         }
     }
 
-    //ToDo add change environment test site/local to switch in on place for all
 }
 

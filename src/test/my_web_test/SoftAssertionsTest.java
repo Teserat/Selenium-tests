@@ -30,7 +30,7 @@ public class SoftAssertionsTest {
         String expectedTitle = "Strona testowa z wszystkimi elementami HTML";
         softAssert.assertEquals(actualTitle, expectedTitle, "Wrong web title!");
         System.out.println(driver.getCurrentUrl());
-        softAssert.assertTrue(driver.getCurrentUrl().contains("welcome"), "URL not contains 'testowa'!");
+        softAssert.assertTrue(driver.getCurrentUrl().contains("welcome"), "URL not contains 'welcome'!");
 
         softAssert.assertAll();
     }

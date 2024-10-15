@@ -85,9 +85,9 @@ public class SeleniumTest {
 
 
 }
-//ToDo tests WebDriverWait
-//ToDo seperate 2 tests or more
-//ToDo check why mvn test not work corectly
+
+//ToDo separate 2 tests or more
+//ToDo check why mvn test not work correctly
 //ToDo BeforeTest make in separate class
 
 
