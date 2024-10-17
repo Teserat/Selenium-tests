@@ -1,3 +1,5 @@
+package simple_test_examples;
+
 import org.testng.annotations.Test;
 
 public class SmokeTest {

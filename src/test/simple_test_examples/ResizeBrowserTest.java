@@ -1,3 +1,5 @@
+package simple_test_examples;
+
 import org.testng.annotations.Test;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
