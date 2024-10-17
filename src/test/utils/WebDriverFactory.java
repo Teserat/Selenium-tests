@@ -1,4 +1,4 @@
-package my_web_test;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

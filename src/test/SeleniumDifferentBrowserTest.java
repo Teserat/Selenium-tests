@@ -8,8 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-public class SeleniumTestDemoPage {
-
+public class SeleniumDifferentBrowserTest {
 
     @Test
     public static void findSeleniumTutorialChrome() {
@@ -17,9 +16,8 @@ public class SeleniumTestDemoPage {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://seleniumdemo.com/");
-        driver.findElement(By.xpath("//span[text()='Shop']")).click(); //span który ma tekst równy Shop
-        WebElement seleniumProduct = driver.findElement(By.xpath("//h2[text()='Java Selenium WebDriver']"));    //znacznik h2, wewnątrz znacznika tekst który jest nazwą kursu "Java Selenium WebDriver"
-        //Sprawdzenie czy element jest widoczny/wyswietlony
+        driver.findElement(By.xpath("//span[text()='Shop']")).click();
+        WebElement seleniumProduct = driver.findElement(By.xpath("//h2[text()='Java Selenium WebDriver']"));
         Assert.assertTrue(seleniumProduct.isDisplayed());
         driver.quit();
     }
@@ -30,21 +28,22 @@ public class SeleniumTestDemoPage {
         WebDriver driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("http://seleniumdemo.com/");
-        driver.findElement(By.xpath("//span[text()='Shop']")).click(); //span który ma tekst równy Shop
-        WebElement seleniumProduct = driver.findElement(By.xpath("//h2[text()='Java Selenium WebDriver']"));    //znacznik h2, wewnątrz znacznika tekst który jest nazwą kursu "Java Selenium WebDriver"
-        //Sprawdzenie czy element jest widoczny/wyswietlony
+        driver.findElement(By.xpath("//span[text()='Shop']")).click();
+        WebElement seleniumProduct = driver.findElement(By.xpath("//h2[text()='Java Selenium WebDriver']"));
+
         Assert.assertTrue(seleniumProduct.isDisplayed());
         driver.quit();
     }
+
     @Test
     public static void findSeleniumTutorialEdge() {
         WebDriverManager.edgedriver().setup();
         WebDriver driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.get("http://seleniumdemo.com/");
-        driver.findElement(By.xpath("//span[text()='Shop']")).click(); //span który ma tekst równy Shop
-        WebElement seleniumProduct = driver.findElement(By.xpath("//h2[text()='Java Selenium WebDriver']"));    //znacznik h2, wewnątrz znacznika tekst który jest nazwą kursu "Java Selenium WebDriver"
-        //Sprawdzenie czy element jest widoczny/wyswietlony
+        driver.findElement(By.xpath("//span[text()='Shop']")).click();
+        WebElement seleniumProduct = driver.findElement(By.xpath("//h2[text()='Java Selenium WebDriver']"));
+
         Assert.assertTrue(seleniumProduct.isDisplayed());
         driver.quit();
     }

@@ -1,4 +1,4 @@
-package my_web_test;
+package utils;
 
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
