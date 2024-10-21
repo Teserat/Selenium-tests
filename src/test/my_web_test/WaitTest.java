@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
@@ -18,9 +17,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.function.Function;
 
-public class WaitTest {
-
-    WebDriver driver;
+public class WaitTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -175,11 +172,5 @@ public class WaitTest {
                 return false;
             }
         });
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

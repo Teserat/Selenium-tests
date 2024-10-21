@@ -1,12 +1,10 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
@@ -14,8 +12,7 @@ import utils.WebDriverFactory;
 
 import java.time.Duration;
 
-public class WaitExtendedExpectedConditionsTest {
-    WebDriver driver;
+public class WaitExtendedExpectedConditionsTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -78,11 +75,5 @@ public class WaitExtendedExpectedConditionsTest {
         WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myModal")));
         Assert.assertTrue(modal.isDisplayed(), "Modal should be visible");
 
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

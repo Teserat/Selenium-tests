@@ -3,7 +3,6 @@ package my_web_test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
@@ -11,8 +10,8 @@ import utils.WebDriverFactory;
 
 import java.util.List;
 
-public class BasicActionsTest {
-    WebDriver driver;
+public class BasicActionsTest extends BaseTest{
+
 
     @BeforeMethod
     public void setUp() {
@@ -173,12 +172,4 @@ public class BasicActionsTest {
         System.out.println(hidden.getAttribute("textContent"));
 
     }
-    @AfterMethod
-    public  void onTestEnd(){
-        TestUtils.sleep(800);
-        driver.quit();
-    }
-
-
-    //ToDo add timer and counter to "Site : TestSide2 - mix elements"
 }

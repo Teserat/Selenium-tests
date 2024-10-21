@@ -1,18 +1,15 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.TestUtils;
 import utils.WebDriverFactory;
 
 import java.util.List;
 
-public class SeleniumCSSSelectorSecondTest {
-    WebDriver driver;
+public class SeleniumCSSSelectorSecondTest extends BaseTest{
+
 
     @BeforeMethod
     public void setUp() {
@@ -52,12 +49,7 @@ public class SeleniumCSSSelectorSecondTest {
         }
 
         /*
-            ToDo find info why it happens or solution/fix // maybe test with other browser
+            ToDo find info why it happens with div or solution/fix // maybe test with other browser
         */
-    }
-    @AfterMethod
-    public  void onTestEnd(){
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

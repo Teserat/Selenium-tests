@@ -1,6 +1,6 @@
 # README - Selenium testing project
 
-The project is focused on automatic website testing for - [TestWebsite](https://teserat.github.io/welcome/). 
+The project is focused on automatic testing (with focus on using different ways to access elements) on My test website - [TestWebsite](https://teserat.github.io/welcome/). 
 Located in `my_web_test` package.
 
 Other tests, not related to "welcome" website tests, are in `simple_test_examples` package.

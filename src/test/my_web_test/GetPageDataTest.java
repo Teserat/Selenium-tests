@@ -1,14 +1,10 @@
 package my_web_test;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.TestUtils;
 import utils.WebDriverFactory;
 
-public class GetPageDataTest {
-    WebDriver driver;
+public class GetPageDataTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -21,11 +17,5 @@ public class GetPageDataTest {
         System.out.println(driver.getTitle());
         //System.out.println(driver.getPageSource());
         System.out.println(driver.getCurrentUrl());
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

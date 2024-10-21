@@ -1,9 +1,7 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
@@ -11,8 +9,7 @@ import utils.WebDriverFactory;
 
 import java.util.Set;
 
-public class WorkOnTwoBrowsersTest {
-    WebDriver driver;
+public class WorkOnTwoBrowsersTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -74,10 +71,5 @@ public class WorkOnTwoBrowsersTest {
         driver.switchTo().defaultContent();
         System.out.println(driver.findElement((By.tagName("h1"))).getText());
 
-    }
-    @AfterMethod
-    public  void onTestEnd(){
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

@@ -2,7 +2,6 @@ package my_web_test;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
@@ -11,8 +10,8 @@ import utils.WebDriverFactory;
 import java.io.File;
 import java.io.IOException;
 
-public class ScreenshootTest {
-    WebDriver driver;
+public class ScreenshotTest extends BaseTest{
+
 
     @BeforeMethod
     public void setUp() {
@@ -35,12 +34,5 @@ public class ScreenshootTest {
         String data = TestUtils.simpleDataStamp();
         String filename = "screenshot_" + data + ".png";
         FileUtils.copyFile(srcFile, new File("src/resources/" + filename));
-
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

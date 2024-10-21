@@ -1,17 +1,13 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.TestUtils;
 import utils.WebDriverFactory;
 
-public class ActionsTest {
-    WebDriver driver;
+public class ActionsTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -33,7 +29,6 @@ public class ActionsTest {
         Actions actions = new Actions(driver);
         //actions.contextClick().perform();
         actions.contextClick(driver.findElement(By.cssSelector("[type='text']"))).perform();
-
     }
 
     @Test
@@ -49,7 +44,6 @@ public class ActionsTest {
         Actions actions = new Actions(driver);
         //actions.contextClick().perform();
         actions.doubleClick(driver.findElement(By.id("dubleClick"))).perform();
-
     }
 
     @Test
@@ -65,12 +59,5 @@ public class ActionsTest {
         Actions actions = new Actions(driver);
         //actions.contextClick().perform();
         actions.moveToElement(driver.findElement(By.tagName("h1"))).perform();
-
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

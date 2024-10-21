@@ -12,8 +12,7 @@ import utils.WebDriverFactory;
 
 import java.util.List;
 
-public class SeleniumTest {
-    WebDriver driver;
+public class SeleniumTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -80,13 +79,6 @@ public class SeleniumTest {
         driver.findElement(By.cssSelector("body > button")).click();
 
     }
-    @AfterMethod
-    public  void onTestEnd(){
-        TestUtils.sleep(800);
-        driver.quit();
-    }
-
-
 }
 
 //ToDo separate 2 tests or more

@@ -1,20 +1,14 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.TestUtils;
 import utils.WebDriverFactory;
 
 import java.util.List;
 
-public class SeleniumXpathTest {
-
-    // tests on a specially prepared website
-    WebDriver driver;
+public class SeleniumXpathTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -64,7 +58,7 @@ public class SeleniumXpathTest {
         System.out.println(elementIndexTest4.getText());
         System.out.println(elementIndexTest5.getText());
 
-        // difrence with  double // and single /
+        // difference with  double // and single /
         //double give all / single give first
         driver.get("https://teserat.github.io/welcome/testWeb1.html");
         By element1 = By.xpath("/html/body/div");
@@ -74,10 +68,5 @@ public class SeleniumXpathTest {
         System.out.println(element1 + " : " + test1.size());
         System.out.println(element2 + " : " + test2.size());
 
-    }
-    @AfterMethod
-    public  void onTestEnd(){
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

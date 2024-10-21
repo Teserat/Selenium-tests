@@ -1,14 +1,12 @@
 package my_web_test;
 
 import org.openqa.selenium.*;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
 import utils.WebDriverFactory;
 
-public class ExecutorTest {
-    WebDriver driver;
+public class ExecutorTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -48,11 +46,5 @@ public class ExecutorTest {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].setAttribute('value','Grzesiek');", element);
 
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

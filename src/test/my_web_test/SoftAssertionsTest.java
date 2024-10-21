@@ -1,17 +1,13 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import utils.TestUtils;
 import utils.WebDriverFactory;
 
-public class SoftAssertionsTest {
-    WebDriver driver;
+public class SoftAssertionsTest extends BaseTest{
     SoftAssert softAssert = new SoftAssert();
 
     @BeforeMethod
@@ -35,11 +31,5 @@ public class SoftAssertionsTest {
         softAssert.assertTrue(driver.getCurrentUrl().contains("welcome"), "URL not contains 'welcome'!");
 
         softAssert.assertAll();
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

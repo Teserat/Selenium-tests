@@ -1,17 +1,13 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.TestUtils;
 import utils.WebDriverFactory;
 
-public class ImageTest {
-    WebDriver driver;
+public class ImageTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() {
@@ -39,11 +35,5 @@ public class ImageTest {
         System.out.println("Image height on welcome page : " + image.getAttribute( "naturalHeight"));
         Assert.assertEquals("0", imageHeight);
         System.out.println(image.getAttribute("complete"));
-    }
-
-    @AfterMethod
-    public void onTestEnd() {
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }

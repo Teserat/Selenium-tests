@@ -1,9 +1,7 @@
 package my_web_test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.TestUtils;
@@ -11,8 +9,7 @@ import utils.WebDriverFactory;
 
 import java.util.List;
 
-public class SeleniumCSSSelectorTest {
-    WebDriver driver;
+public class SeleniumCSSSelectorTest extends BaseTest{
 
     @BeforeTest
     public void setUp() {
@@ -127,11 +124,5 @@ public class SeleniumCSSSelectorTest {
         driver.findElement(firstEmotChild);
         driver.findElement(lastEmotChild);
         driver.findElement(thirdEmotChild);
-    }
-
-    @AfterTest
-    public  void onTestEnd(){
-        TestUtils.sleep(800);
-        driver.quit();
     }
 }
