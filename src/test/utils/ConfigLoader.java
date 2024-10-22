@@ -23,4 +23,8 @@ public class ConfigLoader {
     public static int getIntProperty(String key) {
         return Integer.parseInt(properties.getProperty(key));
     }
+
+    public static boolean getEnvironmentProperty(String key) {
+        return Boolean.parseBoolean(properties.getProperty(key));
+    }
 }

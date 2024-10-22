@@ -8,23 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
-import utils.WebDriverFactory;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.function.Function;
 
 public class WaitTest extends BaseTest{
-
-    @BeforeMethod
-    public void setUp() {
-        driver = WebDriverFactory.initializeChromeDriver();
-        //driver.get("http://127.0.0.1:5500/index.html"); //local host
-        driver.get("https://teserat.github.io/welcome/");
-    }
 
     // test showing that the text does not exist after opening the page
     @Test

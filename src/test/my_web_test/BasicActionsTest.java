@@ -3,22 +3,12 @@ package my_web_test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.TestUtils;
-import utils.WebDriverFactory;
 
 import java.util.List;
 
 public class BasicActionsTest extends BaseTest{
-
-
-    @BeforeMethod
-    public void setUp() {
-        driver = WebDriverFactory.initializeChromeDriver();
-        //driver.get("http://127.0.0.1:5500/index.html"); //local host
-        driver.get("https://teserat.github.io/welcome/");
-    }
 
     @Test
     public void performActionClickAndAlert() {

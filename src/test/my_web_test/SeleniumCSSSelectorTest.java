@@ -2,21 +2,12 @@ package my_web_test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.TestUtils;
-import utils.WebDriverFactory;
 
 import java.util.List;
 
 public class SeleniumCSSSelectorTest extends BaseTest{
-
-    @BeforeTest
-    public void setUp() {
-        driver = WebDriverFactory.initializeChromeDriver();
-        //driver.get("http://127.0.0.1:5500/index.html"); //local host
-        driver.get("https://teserat.github.io/welcome/");
-    }
 
     @Test
     public void seleniumCSSSelectorTest() {

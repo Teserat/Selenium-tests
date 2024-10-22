@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import utils.WebDriverFactory;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -13,10 +11,6 @@ public class UploadFileTest extends BaseTest{
 
     @BeforeMethod
     public void setUp() throws IOException {
-        driver = WebDriverFactory.initializeChromeDriver();
-        //driver.get("http://127.0.0.1:5500/index.html"); //local host
-        driver.get("https://teserat.github.io/welcome/");
-
         addFile("Test.txt");
     }
 
