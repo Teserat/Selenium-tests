@@ -23,6 +23,6 @@ public class ScreenshotTest extends BaseTest{
         File srcFile = screenshot.getScreenshotAs(OutputType.FILE);
         String data = TestUtils.simpleDataStamp();
         String filename = "screenshot_" + data + ".png";
-        FileUtils.copyFile(srcFile, new File("src/resources/" + filename));
+        FileUtils.copyFile(srcFile, new File("src/resources/screenshots/" + filename));
     }
 }

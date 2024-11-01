@@ -1,19 +1,20 @@
 package my_web_test;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import utils.ConfigLoader;
+import utils.TestListener;
 import utils.TestUtils;
 import utils.WebDriverFactory;
 
+@Listeners(value = {TestListener.class})
 public class BaseTest {
     WebDriver driver;
 
-
+    //ToDo some extras
     //define chromedriver or other from setting file
     //maybe headless possibility in config
     //resources add gitignore for files
@@ -31,7 +32,6 @@ public class BaseTest {
         boolean testEnvironment = ConfigLoader.getEnvironmentProperty("test.local");
         String environmentStartPage = (testEnvironment) ? "http://127.0.0.1:5500/index.html" : "https://teserat.github.io/welcome/";
         driver.get(environmentStartPage);
-
     }
 
     @AfterMethod
@@ -39,5 +39,9 @@ public class BaseTest {
         int sleepTime = ConfigLoader.getIntProperty("sleep.time");
         TestUtils.sleep(sleepTime);
         driver.quit();
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }
