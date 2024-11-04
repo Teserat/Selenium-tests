@@ -22,6 +22,20 @@ public class WebDriverFactory {
 
         return driver;
     }
+
+    public static WebDriver initializeChromeDriverHeadless() {
+        // Setup WebDriverManager for ChromeDriver
+        WebDriverManager.chromedriver().setup();
+
+        // Workaround for chromedriver v127
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-search-engine-choice-screen");
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+
+        // Initialize ChromeDriver with options
+        return new ChromeDriver(options);
+    }
 }
 
 // ToDo add edge and firefox

@@ -16,7 +16,6 @@ public class BaseTest {
 
     //ToDo some extras
     //define chromedriver or other from setting file
-    //maybe headless possibility in config
     //resources add gitignore for files
 
     @BeforeSuite
@@ -27,8 +26,14 @@ public class BaseTest {
     @BeforeMethod
     public void setUpTestValues() {
 
+        // test environment headless or with visible GUI
+        boolean headless = ConfigLoader.getEnvironmentProperty("test.headless");
+        if(headless){
+            driver = WebDriverFactory.initializeChromeDriverHeadless();
+        }else {
+            driver = WebDriverFactory.initializeChromeDriver();
+        }
         // test environment  LiveServer/web
-        driver = WebDriverFactory.initializeChromeDriver();
         boolean testEnvironment = ConfigLoader.getEnvironmentProperty("test.local");
         String environmentStartPage = (testEnvironment) ? "http://127.0.0.1:5500/index.html" : "https://teserat.github.io/welcome/";
         driver.get(environmentStartPage);
