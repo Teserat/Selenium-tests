@@ -7,7 +7,7 @@ import utils.TestUtils;
 
 import java.util.List;
 
-public class SeleniumCSSSelectorTest extends BaseTest{
+public class SeleniumCSSSelectorTest extends BaseTest {
 
     @Test
     public void seleniumCSSSelectorTest() {

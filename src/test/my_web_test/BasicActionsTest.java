@@ -8,7 +8,7 @@ import utils.TestUtils;
 
 import java.util.List;
 
-public class BasicActionsTest extends BaseTest{
+public class BasicActionsTest extends BaseTest {
 
     @Test
     public void performActionClickAndAlert() {

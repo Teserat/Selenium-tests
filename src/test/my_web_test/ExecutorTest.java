@@ -4,7 +4,7 @@ import org.openqa.selenium.*;
 import org.testng.annotations.Test;
 import utils.TestUtils;
 
-public class ExecutorTest extends BaseTest{
+public class ExecutorTest extends BaseTest {
 
     @Test
     public void performActionClickUsingJavaScriptExecutor() {

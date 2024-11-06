@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class TestListener  implements ITestListener {
+public class TestListener implements ITestListener {
     // start write on... to find specific methods
 
     @Override

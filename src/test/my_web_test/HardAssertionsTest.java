@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class HardAssertionsTest extends BaseTest{
+public class HardAssertionsTest extends BaseTest {
 
     @BeforeMethod
     public void setUp() {
@@ -66,5 +66,4 @@ public class HardAssertionsTest extends BaseTest{
     }
 }
 
-//ToDo in class that all are in same page change page link in BeforeMethod
 //ToDo add better selectors

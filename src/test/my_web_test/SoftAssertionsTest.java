@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-public class SoftAssertionsTest extends BaseTest{
+public class SoftAssertionsTest extends BaseTest {
     SoftAssert softAssert = new SoftAssert();
 
     @BeforeMethod

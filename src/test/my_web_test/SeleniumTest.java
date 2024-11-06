@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class SeleniumTest extends BaseTest{
+public class SeleniumTest extends BaseTest {
 
     @Test
     public void seleniumWelcomeTest() {
@@ -70,7 +70,5 @@ public class SeleniumTest extends BaseTest{
 }
 
 //ToDo separate 2 tests or more
-//ToDo check why mvn test not work correctly
-//ToDo BeforeTest make in separate class
 
 

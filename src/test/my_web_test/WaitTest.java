@@ -15,7 +15,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.function.Function;
 
-public class WaitTest extends BaseTest{
+public class WaitTest extends BaseTest {
 
     // test showing that the text does not exist after opening the page
     @Test
@@ -31,7 +31,6 @@ public class WaitTest extends BaseTest{
         List<WebElement> elements = driver.findElements(By.xpath("//div[text()='Hello']"));
         Assert.assertTrue(elements.isEmpty(), "Element 'Hello' should not exist, but here it is.");
     }
-
 
     // test with wait sleep
     @Test
@@ -146,6 +145,7 @@ public class WaitTest extends BaseTest{
             }
         });
     }
+
     //Same Method used in tests - just converted part of code to lambda
     public void waitForElementToExistLambdaMethod(By locator) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver);

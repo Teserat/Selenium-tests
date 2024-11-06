@@ -16,7 +16,7 @@ public class BaseTest {
 
     //ToDo some extras
     //define chromedriver or other from setting file
-    //resources add gitignore for files
+
 
     @BeforeSuite
     public void loadConfig() {
@@ -28,9 +28,9 @@ public class BaseTest {
 
         // test environment headless or with visible GUI
         boolean headless = ConfigLoader.getEnvironmentProperty("test.headless");
-        if(headless){
+        if (headless) {
             driver = WebDriverFactory.initializeChromeDriverHeadless();
-        }else {
+        } else {
             driver = WebDriverFactory.initializeChromeDriver();
         }
         // test environment  LiveServer/web

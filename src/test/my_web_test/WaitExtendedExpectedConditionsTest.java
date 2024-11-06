@@ -10,12 +10,11 @@ import utils.TestUtils;
 
 import java.time.Duration;
 
-public class WaitExtendedExpectedConditionsTest extends BaseTest{
+public class WaitExtendedExpectedConditionsTest extends BaseTest {
 
     @Test
     public void visibilityOfElementLocatedTest() {
 
-        //ToDo make to tests by method in every class
         driver.findElement(By.linkText("Rozchodniak")).click();
         driver.findElement(By.linkText("TestSide2 - mix elements")).click();
 
@@ -23,6 +22,7 @@ public class WaitExtendedExpectedConditionsTest extends BaseTest{
         WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("delayedButton")));
         Assert.assertTrue(button.isDisplayed(), "Button should be visible");
     }
+
     @Test
     public void elementToBeClickableTest() {
 

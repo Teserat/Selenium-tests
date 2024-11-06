@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class SeleniumXpathTest extends BaseTest{
+public class SeleniumXpathTest extends BaseTest {
 
     @Test
     public void seleniumXpathTest() {

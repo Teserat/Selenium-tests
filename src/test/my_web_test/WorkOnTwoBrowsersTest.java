@@ -7,7 +7,7 @@ import utils.TestUtils;
 
 import java.util.Set;
 
-public class WorkOnTwoBrowsersTest extends BaseTest{
+public class WorkOnTwoBrowsersTest extends BaseTest {
 
     @Test
     public void webTest() {
@@ -33,9 +33,6 @@ public class WorkOnTwoBrowsersTest extends BaseTest{
         agreeButton.click();
         TestUtils.sleep(500);
         driver.close();
-
-        // @ToDo Add accept agree to TestUtilies
-
         driver.switchTo().window(currentWindow);
 
         driver.findElement(By.linkText("Kliknij, aby otworzyć nowe okno"));

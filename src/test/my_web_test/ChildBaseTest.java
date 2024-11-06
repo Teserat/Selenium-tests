@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 //  only for tests, for use to all others tests
-public class ChildBaseTest extends BaseTest{
+public class ChildBaseTest extends BaseTest {
 
     @Test
     public void performActionRightMouseClick() {
@@ -15,6 +15,6 @@ public class ChildBaseTest extends BaseTest{
         elementsPageLink.click();
 
         String pageTitle = driver.getTitle();
-        System.out.println("Site " +pageTitle);
+        System.out.println("Site " + pageTitle);
     }
 }

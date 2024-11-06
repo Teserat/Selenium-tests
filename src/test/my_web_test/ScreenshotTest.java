@@ -8,7 +8,7 @@ import utils.TestUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class ScreenshotTest extends BaseTest{
+public class ScreenshotTest extends BaseTest {
 
     @Test
     public void takesScreenshotTest() throws IOException {
