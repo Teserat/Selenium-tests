@@ -3,16 +3,19 @@ package my_web_test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 
-//  only for tests, for use to all others tests
+//  only for tests, before use to all others tests
 public class ChildBaseTest extends BaseTest {
 
     @Test
     public void performActionRightMouseClick() {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        HUBPage hubPage = new HUBPage(driver);
+
+        welcomePage.RozchodniakClick();
+        hubPage.TestSide2MixElementsClick();
 
         String pageTitle = driver.getTitle();
         System.out.println("Site " + pageTitle);
