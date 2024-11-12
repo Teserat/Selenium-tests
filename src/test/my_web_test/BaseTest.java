@@ -17,7 +17,6 @@ public class BaseTest {
     //ToDo some extras
     //define chromedriver or other from setting file
 
-
     @BeforeSuite
     public void loadConfig() {
         ConfigLoader.getProperty("sleep.time");
@@ -26,13 +25,20 @@ public class BaseTest {
     @BeforeMethod
     public void setUpTestValues() {
 
-        // test environment headless or with visible GUI
-        boolean headless = ConfigLoader.getEnvironmentProperty("test.headless");
-        if (headless) {
-            driver = WebDriverFactory.initializeChromeDriverHeadless();
-        } else {
-            driver = WebDriverFactory.initializeChromeDriver();
+        // browser pick
+        String browser = ConfigLoader.getProperty("test.browser");
+
+        switch (browser) {
+            case "chrome" -> driver = WebDriverFactory.initializeChromeDriver();
+            case "headless" -> driver = WebDriverFactory.initializeChromeDriverHeadless();
+            case "edge" -> driver = WebDriverFactory.initializeEdgeDriver();
+            case "firefox" -> driver = WebDriverFactory.initializeFirefoxDriver();
+            default -> {
+                System.out.println("Wrong driver in config");
+                driver = null;
+            }
         }
+
         // test environment  LiveServer/web
         boolean testEnvironment = ConfigLoader.getEnvironmentProperty("test.local");
         String environmentStartPage = (testEnvironment) ? "http://127.0.0.1:5500/index.html" : "https://teserat.github.io/welcome/";

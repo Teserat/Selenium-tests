@@ -1,7 +1,5 @@
 package my_web_test;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import pages.HUBPage;
 import pages.WelcomePage;
