@@ -8,7 +8,7 @@ import utils.WebDriverFactory;
 
 public class HUBPage {
 
-    WebDriver driver = WebDriverFactory.initializeChromeDriverHeadless();
+    WebDriver driver;
 
     public HUBPage(WebDriver driver) {
         this.driver = driver;

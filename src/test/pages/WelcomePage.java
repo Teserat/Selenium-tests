@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import utils.WebDriverFactory;
 
 public class WelcomePage {
-    WebDriver driver = WebDriverFactory.initializeChromeDriverHeadless();
+    WebDriver driver;
 
     public WelcomePage(WebDriver driver) {
         this.driver = driver;
