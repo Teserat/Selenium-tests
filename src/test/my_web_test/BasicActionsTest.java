@@ -4,6 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 import java.util.List;
@@ -13,11 +15,11 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionClickAndAlert() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
+
         driver.findElement(By.id("clickOnMe")).click();
 
         Alert alert = driver.switchTo().alert();
@@ -38,11 +40,11 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionEnteringFields() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
+
         WebElement name = driver.findElement(By.id("fname"));
         name.sendKeys("Szymon");
         TestUtils.sleep(500);
@@ -64,11 +66,11 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionCheckboxAndRadioButtons() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
+
         TestUtils.sleep(500);
         driver.findElement(By.cssSelector("[type='checkbox'")).click();
         TestUtils.sleep(400);
@@ -79,11 +81,10 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionOnSelect() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
 
         TestUtils.sleep(500);
@@ -108,11 +109,11 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionToCheckSelectTextAssertion() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
+
 
         TestUtils.sleep(500);
         WebElement selectDrink = driver.findElement(By.cssSelector("select"));
@@ -137,11 +138,10 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionCheckDefaultSelectValue() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         WebElement selectValue = driver.findElement(By.cssSelector("select"));
         System.out.println(selectValue.getAttribute("value"));
@@ -152,11 +152,10 @@ public class BasicActionsTest extends BaseTest {
     @Test
     public void performActionHiddenTextContent() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         WebElement hidden = driver.findElement(By.cssSelector("h4"));
         System.out.println(hidden.getAttribute("textContent"));

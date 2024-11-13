@@ -3,6 +3,8 @@ package my_web_test;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 import java.io.File;
@@ -12,11 +14,10 @@ public class ScreenshotTest extends BaseTest {
 
     @Test
     public void takesScreenshotTest() throws IOException {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide4 - uploading file"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide4UploadingFile();
 
         //cast driver to TakeScreenshot and save screenshot to file
         TakesScreenshot screenshot = (TakesScreenshot) driver;

@@ -6,15 +6,17 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 
 public class HardAssertionsTest extends BaseTest {
 
     @BeforeMethod
     public void setUp() {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide5 - mix elements 2"));
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide5MixElements2();
     }
 
     @Test

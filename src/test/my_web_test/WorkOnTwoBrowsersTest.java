@@ -2,20 +2,26 @@ package my_web_test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 import java.util.Set;
 
 public class WorkOnTwoBrowsersTest extends BaseTest {
 
+    @BeforeMethod
+    public void setUp() {
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide3NewBrowser();
+    }
+
     @Test
     public void webTest() {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide3 - newBrowser"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
 
         //save current name of browser
         String currentWindow = driver.getWindowHandle();
@@ -42,11 +48,6 @@ public class WorkOnTwoBrowsersTest extends BaseTest {
 
     @Test
     public void webTestIframe() {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide3 - newBrowser"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
 
         //driver.switchTo().frame(0); //index
         //---or selector

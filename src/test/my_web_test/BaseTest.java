@@ -49,7 +49,15 @@ public class BaseTest {
     public void onTestEnd() {
         int sleepTime = ConfigLoader.getIntProperty("sleep.time");
         TestUtils.sleep(sleepTime);
-        driver.quit();
+        if (driver != null) {
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                System.err.println("Driver close error: " + e.getMessage());
+            } finally {
+                driver = null;
+            }
+        }
     }
 
     public WebDriver getDriver() {

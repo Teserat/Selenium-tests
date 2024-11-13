@@ -8,7 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 import java.time.Duration;
@@ -17,14 +20,17 @@ import java.util.function.Function;
 
 public class WaitTest extends BaseTest {
 
+    @BeforeMethod
+    public void setUp() {
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide6WaitTest();
+    }
+
     // test showing that the text does not exist after opening the page
     @Test
     public void verificationIfTextIsInvisibleOnsStart1() {
-
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
 
         //TestUtils.sleep(4000);
         //using list - will not throw an exception if the element does not exist (like normal find element)
@@ -36,10 +42,6 @@ public class WaitTest extends BaseTest {
     @Test
     public void verificationVisibilityTextWithSleep() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
 
         TestUtils.sleep(4000);
         WebElement test = driver.findElement(By.xpath("//div[text()='Hello']"));
@@ -52,11 +54,6 @@ public class WaitTest extends BaseTest {
     public void verificationVisibilityTextWithImplicit() {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
-
 
         WebElement test = driver.findElement(By.xpath("//div[text()='Hello']"));
         System.out.println(test.getText());
@@ -67,10 +64,6 @@ public class WaitTest extends BaseTest {
     @Test
     public void verificationVisibilityTextWithWebDriverWait() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[text()='Hello']")));
@@ -84,10 +77,6 @@ public class WaitTest extends BaseTest {
     @Test
     public void verificationVisibilityTextWithFluentWait() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
 
         FluentWait<WebDriver> wait = new FluentWait<>(driver);
         wait.withTimeout(Duration.ofSeconds(10));
@@ -103,22 +92,12 @@ public class WaitTest extends BaseTest {
     @Test
     public void verificationVisibilityTextWithAddingElementList() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
-
         waitForElementToExist(By.xpath("//div[text()='Hello']"));
     }
 
     //Test with wait with own expression (change for lambda expression)
     @Test
     public void verificationVisibilityTextWithAddingElementList2() {
-
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide6 - Wait test"));
-        elementsPageLink.click();
 
         waitForElementToExistLambdaMethod(By.xpath("//div[text()='Hello']"));
     }

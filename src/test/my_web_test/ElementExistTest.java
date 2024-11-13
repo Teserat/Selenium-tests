@@ -5,6 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 
 public class ElementExistTest extends BaseTest {
 
@@ -30,10 +32,10 @@ public class ElementExistTest extends BaseTest {
 
     @Test
     public void elementDisabled() {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         //false
         WebElement enabledElement = driver.findElement(By.id("clickOnMe99"));
@@ -49,10 +51,10 @@ public class ElementExistTest extends BaseTest {
 
     @Test
     public void checkboxSelectTest() {
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         WebElement enabledElement = driver.findElement(By.cssSelector("[type='checkbox"));
         //enabledElement.click();

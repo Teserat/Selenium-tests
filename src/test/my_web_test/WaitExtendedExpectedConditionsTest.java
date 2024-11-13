@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 import java.time.Duration;
@@ -15,8 +17,10 @@ public class WaitExtendedExpectedConditionsTest extends BaseTest {
     @Test
     public void visibilityOfElementLocatedTest() {
 
-        driver.findElement(By.linkText("Rozchodniak")).click();
-        driver.findElement(By.linkText("TestSide2 - mix elements")).click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        HUBPage hubPage = new HUBPage(driver);
+        welcomePage.RozchodniakClick();
+        hubPage.TestSide2MixElementsClick();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         WebElement button = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("delayedButton")));
@@ -26,8 +30,10 @@ public class WaitExtendedExpectedConditionsTest extends BaseTest {
     @Test
     public void elementToBeClickableTest() {
 
-        driver.findElement(By.linkText("Rozchodniak")).click();
-        driver.findElement(By.linkText("TestSide2 - mix elements")).click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        HUBPage hubPage = new HUBPage(driver);
+        welcomePage.RozchodniakClick();
+        hubPage.TestSide2MixElementsClick();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement clickableButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("delayedButton")));
@@ -38,8 +44,10 @@ public class WaitExtendedExpectedConditionsTest extends BaseTest {
     @Test
     public void elementToBeClickableAlertTest() {
 
-        driver.findElement(By.linkText("Rozchodniak")).click();
-        driver.findElement(By.linkText("TestSide2 - mix elements")).click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        HUBPage hubPage = new HUBPage(driver);
+        welcomePage.RozchodniakClick();
+        hubPage.TestSide2MixElementsClick();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement clickableButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("delayedButton")));
@@ -58,8 +66,11 @@ public class WaitExtendedExpectedConditionsTest extends BaseTest {
     @Test
     public void elementToBeOnModal() {
 
-        driver.findElement(By.linkText("Rozchodniak")).click();
-        driver.findElement(By.linkText("TestSide7 - Okno Modalne")).click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide7OknoModalne();
+
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.findElement(By.xpath("//button[text()='Po naciśnięciu guzika otworzy się okno modalne']")).click();

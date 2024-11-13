@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 import java.io.File;
@@ -21,10 +23,10 @@ public class UploadFileTest extends BaseTest{
     @Test
     public void UploadFileTest() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide4 - uploading file"));
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        HUBPage hubPage = new HUBPage(driver);
+        welcomePage.RozchodniakClick();
+        hubPage.TestSide4UploadingFile();
 
         //Converting a relative path to an absolute path:
         String filename = "file.txt";

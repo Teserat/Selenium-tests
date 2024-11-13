@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 
 public class ImageTest extends BaseTest {
 
@@ -19,8 +21,10 @@ public class ImageTest extends BaseTest {
 
     @Test
     public void imageNotExistVerificationOnTestSide5() {
-        driver.findElement(By.linkText("Rozchodniak")).click();
-        driver.findElement(By.linkText("TestSide5 - mix elements 2")).click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide5MixElements2();
         WebElement image = driver.findElement(By.tagName("img"));
         System.out.println(image.getAttribute("currentSrc"));
         String imageHeight = image.getAttribute("naturalHeight");

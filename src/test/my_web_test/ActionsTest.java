@@ -4,17 +4,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 
 public class ActionsTest extends BaseTest {
 
     @Test
     public void performActionRightMouseClick() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         //class actions, parameter driver
         Actions actions = new Actions(driver);
@@ -25,11 +26,10 @@ public class ActionsTest extends BaseTest {
     @Test
     public void performActionDoubleMouseClick() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         //class actions, parameter driver
         Actions actions = new Actions(driver);
@@ -40,11 +40,10 @@ public class ActionsTest extends BaseTest {
     @Test
     public void performActionMouseover() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        System.out.println("Site : " + elementsPageLink.getText());
-        elementsPageLink.click();
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
 
         //class actions, parameter driver
         Actions actions = new Actions(driver);

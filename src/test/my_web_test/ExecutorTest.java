@@ -2,6 +2,8 @@ package my_web_test;
 
 import org.openqa.selenium.*;
 import org.testng.annotations.Test;
+import pages.HUBPage;
+import pages.WelcomePage;
 import utils.TestUtils;
 
 public class ExecutorTest extends BaseTest {
@@ -9,11 +11,12 @@ public class ExecutorTest extends BaseTest {
     @Test
     public void performActionClickUsingJavaScriptExecutor() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        elementsPageLink.click();
-        TestUtils.sleep(500);
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
+
+        //TestUtils.sleep(500);
         WebElement element = driver.findElement(By.cssSelector("[type='checkbox'"));
 
         //element.click();
@@ -26,11 +29,12 @@ public class ExecutorTest extends BaseTest {
     @Test
     public void performActionSetAttributeUsingJavaScriptExecutor() {
 
-        WebElement basicPageLink = driver.findElement(By.linkText("Rozchodniak"));
-        basicPageLink.click();
-        WebElement elementsPageLink = driver.findElement(By.linkText("TestSide2 - mix elements"));
-        elementsPageLink.click();
-        TestUtils.sleep(500);
+        WelcomePage welcomePage = new WelcomePage(driver);
+        welcomePage.RozchodniakClick();
+        HUBPage hubPage = new HUBPage(driver);
+        hubPage.TestSide2MixElementsClick();
+
+        //TestUtils.sleep(500);
         WebElement element = driver.findElement(By.cssSelector("[name='fname']"));
 
         //value addition (when sendKeys don't work)
