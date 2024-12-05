@@ -2,15 +2,15 @@ package utils;
 
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 
@@ -65,5 +65,21 @@ public class TestUtils {
         String data = TestUtils.simpleDataStamp();
         String filename = "screenshot_" + data + ".png";
         FileUtils.copyFile(srcFile, new File("src/resources/screenshots/" + filename));
+    }
+
+    //--Explicit Wait
+    public static void waitForElementToExist(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait.until((ExpectedConditions.presenceOfElementLocated(locator)));
+    }
+    //--Explicit Wait
+    public static void waitForElementToBeVisible(WebDriver driver, WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait.until((ExpectedConditions.visibilityOf(element)));
+    }
+    //--Explicit Wait
+    public static void waitForNotEmptyList(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        wait.until(browser -> browser.findElements(locator).size() > 0);
     }
 }

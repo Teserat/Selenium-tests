@@ -14,9 +14,6 @@ import utils.WebDriverFactory;
 public class BaseTest {
     WebDriver driver;
 
-    //ToDo some extras
-    //define chromedriver or other from setting file
-
     @BeforeSuite
     public void loadConfig() {
         ConfigLoader.getProperty("sleep.time");
