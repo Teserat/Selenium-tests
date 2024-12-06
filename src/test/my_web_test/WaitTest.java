@@ -102,6 +102,16 @@ public class WaitTest extends BaseTest {
         waitForElementToExistLambdaMethod(By.xpath("//div[text()='Hello']"));
     }
 
+    @Test
+    public void verificationVisibilityWithUsePredefinedMethodInTestUtils(){
+        System.out.println("test");
+        TestUtils.waitForElementToExist(driver, By.xpath("//*[@id='fast']"));
+    }
+
+
+    //ToDo move two methods to TestUtils, problem with driver to solve after move and make them static.
+    // java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElements(org.openqa.selenium.By)" because "utils.TestUtils.driver" is null
+
     //Method used in tests
     public void waitForElementToExist(By locator) {
         FluentWait<WebDriver> wait = new FluentWait<>(driver);

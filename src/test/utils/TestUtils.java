@@ -69,7 +69,7 @@ public class TestUtils {
 
     //--Explicit Wait
     public static void waitForElementToExist(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until((ExpectedConditions.presenceOfElementLocated(locator)));
     }
     //--Explicit Wait
