@@ -90,67 +90,21 @@ public class WaitTest extends BaseTest {
 
     //Test with wait with own expression
     @Test
-    public void verificationVisibilityTextWithAddingElementList() {
+    public void verificationVisibilityTextWithAddingElementListFluentWait() {
 
-        waitForElementToExist(By.xpath("//div[text()='Hello']"));
+        TestUtils.waitForElementToExistFluent(driver, By.xpath("//div[text()='Hello']"));
     }
 
     //Test with wait with own expression (change for lambda expression)
     @Test
-    public void verificationVisibilityTextWithAddingElementList2() {
+    public void verificationVisibilityTextWithAddingElementListFluentWaitLambda() {
 
-        waitForElementToExistLambdaMethod(By.xpath("//div[text()='Hello']"));
+        TestUtils.waitForElementToExistFluentLambdaMethod(driver, By.xpath("//div[text()='Hello']"));
     }
 
     @Test
     public void verificationVisibilityWithUsePredefinedMethodInTestUtils(){
         System.out.println("test");
         TestUtils.waitForElementToExist(driver, By.xpath("//*[@id='fast']"));
-    }
-
-
-    //ToDo move two methods to TestUtils, problem with driver to solve after move and make them static.
-    // java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.findElements(org.openqa.selenium.By)" because "utils.TestUtils.driver" is null
-
-    //Method used in tests
-    public void waitForElementToExist(By locator) {
-        FluentWait<WebDriver> wait = new FluentWait<>(driver);
-        wait.withTimeout(Duration.ofSeconds(10));
-        wait.pollingEvery(Duration.ofSeconds(1));
-        wait.ignoring(NoSuchElementException.class);
-
-        //wait until happen (if not = infinity loop)
-        wait.until(new Function<WebDriver, Boolean>() {
-            @Override
-            public Boolean apply(WebDriver Boolean) {
-                List<WebElement> elements = driver.findElements(locator);
-                if (elements.size() > 0) {
-                    System.out.println("Element is on website");
-                    return true;
-                } else {
-                    System.out.println("Element is not on website");
-                    return false;
-                }
-            }
-        });
-    }
-
-    //Same Method used in tests - just converted part of code to lambda
-    public void waitForElementToExistLambdaMethod(By locator) {
-        FluentWait<WebDriver> wait = new FluentWait<>(driver);
-        wait.withTimeout(Duration.ofSeconds(10));
-        wait.pollingEvery(Duration.ofSeconds(1));
-        wait.ignoring(NoSuchElementException.class);
-
-        wait.until((driver) -> {
-            List<WebElement> elements = driver.findElements(locator);
-            if (elements.size() > 0) {
-                System.out.println("Element is on website");
-                return true;
-            } else {
-                System.out.println("Element is not on website");
-                return false;
-            }
-        });
     }
 }

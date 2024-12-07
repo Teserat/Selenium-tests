@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Function;
 
 public class TestUtils {
 
@@ -81,5 +83,47 @@ public class TestUtils {
     public static void waitForNotEmptyList(WebDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(100));
         wait.until(browser -> browser.findElements(locator).size() > 0);
+    }
+
+    //--Explicit Wait - FluentWait
+    public static void waitForElementToExistFluent(WebDriver driver, By locator) {
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.withTimeout(Duration.ofSeconds(10));
+        wait.pollingEvery(Duration.ofSeconds(1));
+        wait.ignoring(NoSuchElementException.class);
+        //wait until happen (if not = infinity loop)
+        wait.until(new Function<WebDriver, Boolean>() {
+            @Override
+            public Boolean apply(WebDriver Boolean) {
+                List<WebElement> elements = driver.findElements(locator);
+                if (elements.size() > 0) {
+                    System.out.println("Element is on website");
+                    return true;
+                } else {
+                    System.out.println("Element is not on website");
+                    return false;
+                }
+            }
+        });
+    }
+
+    //--Explicit Wait - FluentWait
+    // Same Method used in tests - just converted part of code to lambda
+    public static void waitForElementToExistFluentLambdaMethod(WebDriver driver, By locator) {
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.withTimeout(Duration.ofSeconds(10));
+        wait.pollingEvery(Duration.ofSeconds(1));
+        wait.ignoring(NoSuchElementException.class);
+
+        wait.until((WebDriver) -> {
+            List<WebElement> elements = driver.findElements(locator);
+            if (elements.size() > 0) {
+                System.out.println("Element is on website");
+                return true;
+            } else {
+                System.out.println("Element is not on website");
+                return false;
+            }
+        });
     }
 }
